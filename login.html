@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-<body class="pagina">
-    <main class="w-100 m-auto d-flex align-items-center justify-content-center">
-        
-        <img src="assets/img/Logo.png" class="m-5">
-        
-        <form id="formulario" class="p-5">
-            <h1 class="formulario-titulo">Login</h1>
-                <div class="mt-5">
-                    <label for="floatingInput">Email</label>
-                    <input type="email" class="form-control" id="floatingInput" placeholder="nome@email.com">
+<body class="mt-5 bg-light">
+    <main class="w-100">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-center justify-content-lg-between vh-100">
+                <div class="col-md-6 mb-3">
+                    <img src="assets/img/Logo.png" class="img-fluid">
                 </div>
-                <div class="mt-5"> 
-                    <label for="floatingInput">Senha</label>
-                    <input type="password" class="form-control" id="floatingInput" placeholder="senha">
-                </div>
-                <button type="button" class="btn btn-primary mt-5 btn-block formulario-botao">Entrar</button>
-
+                <div class="col-md-6 mb-3">
+                    <form class="p-5 d-flex flex-column formulario">
+                        <h1 class="formulario-titulo">Login</h1>
+                        <div class="mt-5">
+                            <label for="floatingInput">Email</label>
+                            <input type="email" class="form-control formulario-label" id="floatingInput" placeholder="nome@email.com">
+                        </div>
+                        <div class="mt-5"> 
+                            <label for="floatingInput">Senha</label>
+                            <input type="password" class="form-control formulario-label" id="floatingInput" placeholder="senha">
+                        </div>
+                            <button type="button" class="btn btn-primary mt-5 btn-block formulario-botao">Entrar</button>
+                    </form>
             </div>
-        </form>
+        </div>
     </main>
 </body>
 </html>

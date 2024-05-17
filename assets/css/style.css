@@ -1,22 +1,21 @@
-.pagina{
-    height: 100%;
-    margin-top: 15rem;
-    background-color: gray;
-}
-
-#formulario{
-    background-color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.formulario{
+    background-color: #FFFFFF
 }
 
 .formulario-titulo{
-    color: #000000;
     font-weight: 800;
 }
 
 .formulario-botao{
     background-color: #FD7401;
     border-color: #FD7401;
+}
+
+.formulario-botao:hover{
+    background-color: #e46801;
+    border-color: #e46801;
+}
+
+.formulario-label{
+    background-color: #f1f3f6;
 }
