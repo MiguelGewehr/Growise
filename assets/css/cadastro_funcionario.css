@@ -1,3 +1,9 @@
 .formulario{
     background-color: #FFFFFF;
 }
+
+.formulario-botao{
+    background-color: #FD7401;
+    border-color: #FD7401;
+    color: #FFF;
+}
