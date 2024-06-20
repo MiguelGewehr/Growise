@@ -1,5 +1,14 @@
+.titulo-principal{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+}
 .formulario{
     background-color: #FFFFFF;
+}
+
+.label{
+    background-color: #F1F3F6;
+    border-color: #F1F3F6;
 }
 
 .formulario-botao{
