@@ -41,6 +41,7 @@ document.getElementById('cadastro-form').addEventListener('submit', async functi
             //console.error('Erro:', response.statusText);
         }
     } catch (error) {
+        alert('Erro ao cadastrar!');
         //console.error('Erro:', error);
     }
 });
