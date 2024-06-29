@@ -2,7 +2,9 @@
     background-color: white;
 }
 
-.card-vendas{
+.card-vendas {
+    width: 180px;
+    height: 120px;
     background-color: #F1F0F0;
     border-radius: 1rem;
 }
