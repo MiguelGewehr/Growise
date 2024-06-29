@@ -24,58 +24,59 @@
             <div class="col-12 my-5">
                 <h2 class="text-center titulo-principal">Cadastro de Produto</h2>
             </div>
-            <div class="mb-3 w-100">
+
+            <div class="mb-3 w-100" >
                 <form class="formulario shadow-lg">
-                    <div class="d-flex p-3">
+                    <div class="d-flex p-3" id="cadastro-form">
                         <div class="w-50 p-5">
-                            <div>
+                            <div class="mb-3">
                                 <label for="#" class="form-label">Nome</label>
-                                <input type="name" class="form-control">
+                                <input type="name" class="form-control" id="nome" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Preço de compra</label>
-                                <input type="" class="form-control">
+                                <input type="" class="form-control" id="preco_compra" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Estoque inicial</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="estoque" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Marca</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="marca" required>
                             </div>
                         </div>
 
                         <div class="w-50 p-5">
                             <div class="mb-3">
                                 <label for="#" class="form-label">Fornecedor</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="fornecedor" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Preço de venda</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="preco_venda" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Quantidade</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="quantidade" required>
                             </div>
                             <div class="mb-3">
                                 <label for="#" class="form-label">Descrição</label>
-                                <input type="" class="form-control" id="">
+                                <input type="" class="form-control" id="descricao" required>
                             </div>
                         </div>
                     </div>
+                    <div class="col-1 mt-5 mx-auto">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
                 </form>
-                
-                <div class="col-1 mt-5 mx-auto">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
-                </div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="assets/js/cadastro_produto.js"></script>
 </body>
 
 </html>
