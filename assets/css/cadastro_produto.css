@@ -2,3 +2,16 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
 }
+
+.formulario-botao{
+    background-color: #FD7401;
+    border-color: #FD7401;
+    color: white;
+    width: 100%; 
+}
+
+.formulario-botao:hover{
+    background-color: #e46801;
+    border-color: #e46801;
+    color: white;
+}
