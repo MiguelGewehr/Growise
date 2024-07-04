@@ -1,0 +1,9 @@
+/* Seleciona o link que contém a palavra "Produtos" */
+.nav-link[href="produtos.html"] {
+    color: #F15B36 !important; /* Define a cor da fonte como laranja */
+}
+
+.card{
+    width: 18rem; 
+    height: 390px;
+}
