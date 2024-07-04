@@ -1,3 +1,8 @@
 .grafico{
     max-height:400px;
 }
+
+/* Seleciona o link que contém a palavra "Produtos" */
+.nav-link[href="dashboard.html"] {
+    color: #F15B36 !important; /* Define a cor da fonte como laranja */
+}
