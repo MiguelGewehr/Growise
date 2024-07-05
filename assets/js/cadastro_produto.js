@@ -25,7 +25,7 @@ if(botao){
         };
 
         try {
-            const response = await fetch('URL_DO_SEU_BACKEND', {
+            const response = await fetch('http://localhost:8080/auth/cadastro_produto', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
