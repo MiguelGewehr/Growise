@@ -2,7 +2,10 @@
     max-height:400px;
 }
 
-/* Seleciona o link que contém a palavra "Produtos" */
 .nav-link[href="dashboard.html"] {
-    color: #F15B36 !important; /* Define a cor da fonte como laranja */
+    color: #F15B36 !important;
+}
+
+.navbar{
+    box-shadow: 0px 0px 30px 2px rgb(204, 204, 204);
 }
