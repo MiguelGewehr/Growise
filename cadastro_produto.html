@@ -10,80 +10,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="assets/css/cadastro_produto.css">
+    <link rel="icon" href="assets/img/logo-sm.png">
 </head>
 
-<body class="bg-light w-100">
+<body class="bg-light">
 
-    <div class="container">
-        <div class="row justify-content-center">
+    <nav class="navbar p-3 shadow-lg" id="abaSuperior">
+        <div>
+            <button id="botaoVoltar" type="button" class="btn btn-primary formulario-botao">voltar</button>
+        </div>
+        <div class="" id="logo">
+            <img src="assets/img/logo-sm.png" class="img-fluid">
+        </div>
+        <div class="">
+            <h5 id="nome-funcionario" class="my-0">John Doe</h5>
+            <p id="funcao-funcionario" class="my-0">Gerente</p>
+        </div>
+    </nav>
 
-            <div class="col-1 my-5">
-                <img src="assets/img/logo-sm.png">
-            </div>
-
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-12 my-5">
                 <h2 class="text-center titulo-principal">Cadastro de Produto</h2>
             </div>
-            <div class="mb-3 w-100">
-                <form class="formulario shadow-lg">
-                    <div class="container">
-                        <div class="d-flex flex-column flex-md-row p-0">
-                            <div class="w-100 w-md-50 p-4">
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="nome">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precoCompra" class="form-label">Preço de compra</label>
-                                    <input type="text" class="form-control" id="precoCompra">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="estoqueInicial" class="form-label">Estoque inicial</label>
-                                    <input type="text" class="form-control" id="estoqueInicial">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="marca" class="form-label">Marca</label>
-                                    <input type="text" class="form-control" id="marca">
-                                </div>
+        </div>
+
+        <div class="row px-5 mb-3">
+            <form class="formulario shadow-lg p-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 px-3">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome">
                             </div>
-                    
-                            <div class="w-100 w-md-50 p-4">
-                                <div class="mb-3">
-                                    <label for="fornecedor" class="form-label">Fornecedor</label>
-                                    <input type="text" class="form-control" id="fornecedor">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precoVenda" class="form-label">Preço de venda</label>
-                                    <input type="text" class="form-control" id="precoVenda">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="quantidade" class="form-label">Quantidade</label>
-                                    <input type="text" class="form-control" id="quantidade">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="descricao" class="form-label">Descrição</label>
-                                    <input type="text" class="form-control" id="descricao">
-                                </div>
+                            <div class="mb-3">
+                                <label for="precoCompra" class="form-label">Preço de compra</label>
+                                <input type="text" class="form-control" id="precoCompra">
+                            </div>
+                            <div class="mb-3">
+                                <label for="estoqueInicial" class="form-label">Estoque inicial</label>
+                                <input type="text" class="form-control" id="estoqueInicial">
+                            </div>
+                            <div class="mb-3">
+                                <label for="marca" class="form-label">Marca</label>
+                                <input type="text" class="form-control" id="marca">
                             </div>
                         </div>
-                    
-                        <div class="text-center p-3">
+                        <div class="col-6 px-3">
+                            <div class="mb-3">
+                                <label for="fornecedor" class="form-label">Fornecedor</label>
+                                <input type="text" class="form-control" id="fornecedor">
+                            </div>
+                            <div class="mb-3">
+                                <label for="precoVenda" class="form-label">Preço de venda</label>
+                                <input type="text" class="form-control" id="precoVenda">
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantidade" class="form-label">Quantidade</label>
+                                <input type="text" class="form-control" id="quantidade">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <input type="text" class="form-control" id="descricao">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center p-3">
                             <div class="mb-3">
                                 <label for="profilePic" class="form-label">Imagem</label>
-                                <input type="file" id="profilePic" name="profilePic" accept="image/*" class="form-control-file" required>
+                                <input type="file" id="profilePic" name="profilePic" accept="image/*"
+                                    class="form-control-file" required>
                             </div>
                         </div>
                     </div>
-                </form>
-
-                <div class="row justify-content-center mt-5">
-                    <div class="col-2">
-                        <button type="submit" class="btn formulario-botao" id="botaoCadastrar">Cadastrar</button>
-                    </div>
-                    <div class="col-2">
-                        <button type="button" class="btn formulario-botao" id="botaoVoltar" >Voltar</button>
-                    </div>
                 </div>
+            </form>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-2">
+                    <button type="submit" class="btn formulario-botao" id="botaoCadastrar">Cadastrar</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

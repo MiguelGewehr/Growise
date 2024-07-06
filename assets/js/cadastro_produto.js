@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Dados estáticos para teste
+    const dados_usuario = {
+        nome : "Miguel",
+        funcao : "Gerente"
+    };
+
+    atualizarDadosUsuario(dados_usuario);
+});
+
+function atualizarDadosUsuario(dados) {
+    document.getElementById('nome-funcionario').innerText = dados.nome;
+    document.getElementById('funcao-funcionario').innerText = dados.funcao;
+}
+
 let botao = document.getElementById('botaoCadastrar');
 
 if(botao){
