@@ -102,16 +102,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="text-center">Fornecedor: ${produto.fornecedor}</p>
                         <h6 class="mx-1">Quantidade:</h6>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${index}"
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${produto.quantidade}"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 Selecione um número
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton${index}" id="dropdownMenu${index}">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton${produto.quantidade}" id="dropdownMenu${produto.quantidade}">
                                 <!-- Opções serão adicionadas dinamicamente aqui -->
                             </ul>
                         </div>
                         <div class="d-flex flex-column align-items-center my-3">
-                            <button type="button" class="btn btn-primary" onclick="adicionarProduto(${index})">Adicionar</button>
+                            <button type="button" class="btn btn-primary" onclick="adicionarProduto(${produto.quantidade})">Adicionar</button>
                         </div>
                     </div>
                 </div>
@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const container = document.querySelector('.container-fluid .row');
                 container.innerHTML = ''; // Limpa os produtos existentes
-                data.forEach((produto, index) => {
-                    const card = criarCardProduto(produto, index + 1);
+                data.forEach((produto) => {
+                    const card = criarCardProduto(produto);
                     container.appendChild(card);
                 });
             })
