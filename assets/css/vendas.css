@@ -15,3 +15,16 @@
     box-shadow: -6px 6px 30px 1px rgba(104, 104, 104, 0.37);
     z-index: 1000;
 }
+
+.formulario-botao{
+    background-color: #FD7401;
+    border-color: #FD7401;
+    color: white;
+    width: 100%; 
+}
+
+.formulario-botao:hover{
+    background-color: #e46801;
+    border-color: #e46801;
+    color: white;
+}
