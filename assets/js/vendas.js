@@ -1,3 +1,5 @@
+var valorTotalPedido = 0;
+
 function adicionarProduto(classeDadosProduto) {
     
     var produto = document.querySelector('.' + classeDadosProduto);
@@ -9,12 +11,16 @@ function adicionarProduto(classeDadosProduto) {
     var preco = produto.querySelector('.preco').textContent;
     var valor = convertToFloat(preco) * quantidade;
 
+    valorTotalPedido += valor;
+
     // Criando a estrutura HTML
     var novoProduto = `
         <div class="ms-4">
-            <p>`+ nome +`</p>
-            <p>Quantidade: ` + quantidadeTexto + `</p>
-            <p>Valor: R$` + valor + `</p>
+            <div class="produto-item">
+                <p class="nome-produto">`+ nome +`</p>
+                <p class="quantidade-produto">Quantidade: ` + quantidadeTexto + `</p>
+                <p class="valor-total-produto">Valor: R$` + valor.toFixed(2).replace(".", ",") + `</p>
+            </div>
         </div>
         <hr>
     `;
@@ -22,6 +28,8 @@ function adicionarProduto(classeDadosProduto) {
     // Inserindo a nova estrutura após o botão
     var container = document.querySelector('.container-pedidos');
     container.insertAdjacentHTML('beforeend', novoProduto);
+
+    document.getElementById('valorTotal').textContent = `Valor total: R$ ${valorTotalPedido.toFixed(2).replace(".", ",")}`;
 }
 
 function convertToFloat(currencyStr) {
@@ -36,39 +44,7 @@ function convertToFloat(currencyStr) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const maxNumber = 10; // Você pode mudar esse valor para quantos números quiser
-
-    function populateDropdownMenu(dropdownMenu) {
-        // Limpa o conteúdo do menu antes de adicionar novos itens
-        dropdownMenu.innerHTML = '';
-
-        for (let i = 1; i <= maxNumber; i++) {
-            let li = document.createElement('li');
-            let a = document.createElement('a');
-            a.className = 'dropdown-item';
-            a.href = '#';
-            a.textContent = i;
-            a.addEventListener('click', function() {
-                document.getElementById('dropdownMenuButton1').textContent = i;
-            });
-            li.appendChild(a);
-            dropdownMenu.appendChild(li);
-        }
-    }
-
-    // Adiciona event listeners para os botões que abrem os offcanvas
-    const offcanvasButtons = document.querySelectorAll('[data-bs-toggle="offcanvas"]');
-    offcanvasButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = button.getAttribute('href');
-            const offcanvas = document.querySelector(targetId);
-            const dropdownMenu = offcanvas.querySelector('#dropdownMenu');
-            populateDropdownMenu(dropdownMenu);
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+    //gera o card dos produtos
     const apiUrl = /*'URL da API para buscar os produtos';*/
 
     function criarCardProduto(produto, index) {
@@ -126,9 +102,94 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Erro ao carregar produtos:', error));
     }
     
-
-    // Carregar os produtos ao carregar a página
     carregarProdutos();
+
+
+
+
+
+    //gera a barra do pedido
+    const maxNumber = 10; // Você pode mudar esse valor para quantos números quiser
+
+    function populateDropdownMenu(dropdownMenu) {
+        // Limpa o conteúdo do menu antes de adicionar novos itens
+        dropdownMenu.innerHTML = '';
+
+        for (let i = 1; i <= maxNumber; i++) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+            a.className = 'dropdown-item';
+            a.href = '#';
+            a.textContent = i;
+            a.addEventListener('click', function() {
+                document.getElementById('dropdownMenuButton1').textContent = i;
+            });
+            li.appendChild(a);
+            dropdownMenu.appendChild(li);
+        }
+    }
+
+    // Adiciona event listeners para os botões que abrem os offcanvas
+    const offcanvasButtons = document.querySelectorAll('[data-bs-toggle="offcanvas"]');
+    offcanvasButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = button.getAttribute('href');
+            const offcanvas = document.querySelector(targetId);
+            const dropdownMenu = offcanvas.querySelector('#dropdownMenu');
+            populateDropdownMenu(dropdownMenu);
+        });
+    });
+
+
+
+
+
+
+    //cadastra venda
+    document.getElementById('botaoVenda').addEventListener('click', function () {
+        // Colete os dados dos produtos na aba do pedido
+        let produtos = [];
+        const pedidoLateral = document.getElementById('abaPedidoLateral');
+        const produtosElementos = pedidoLateral.querySelectorAll('.produto-item');
+        const valorTotalPedido = 0;
+
+        produtosElementos.forEach(function (produtoElemento) {
+            const nomeProduto = produtoElemento.querySelector('.nome-produto').innerText;
+            const quantidadeProduto = produtoElemento.querySelector('.quantidade-produto').innerText;
+            const valorTotalProduto = produtoElemento.querySelector('.valor-total-produto').innerText;
+            valorTotalPedido += valorTotalProduto;
+
+            produtos.push({
+                nome: nomeProduto,
+                quantidade: quantidadeProduto,
+                valorTotalProduto: valorTotalProduto
+            });
+        });
+
+        // Formate os dados em JSON
+        const pedido = {
+            numeroPedido: document.querySelector('.container-pedidos p').innerText.split(' ')[2], // Obtém o número do pedido
+            produtos: produtos,
+            valorTotalPedido: valorTotalPedido
+        };
+
+        // Envie os dados ao backend
+        fetch('URL_DO_SEU_BACKEND', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pedido)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+
 });
 
 function toggleLogout() {
