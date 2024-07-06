@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.className = 'col-3';
         card.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}">
+                <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}"> //caso o produto tenha imagem enviada
                 <div class="card-body">
                     <h5 class="card-title">${produto.nome}</h5>
                     <p class="card-text">R$${produto.preco_venda},00</p>
