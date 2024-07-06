@@ -3,3 +3,15 @@
     display: flex;
     justify-content: center;
 }
+
+.logout-bar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    display: none;
+    box-shadow: -6px 6px 30px 1px rgba(104, 104, 104, 0.37);
+    z-index: 1000;
+}

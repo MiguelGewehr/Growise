@@ -35,3 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carregar os produtos ao carregar a página
     carregarProdutos();
 });
+
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+function logout() {
+    // Implement logout functionality here
+    // For example, redirect to logout page or clear session
+    alert('Logout button clicked!');
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
+});

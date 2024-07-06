@@ -20,14 +20,19 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="logo">
                 <img src="assets/img/logo-sm.png" class="img-fluid">
             </div>
-            <div class="info">
+
+            <div class="info" id="infoSection">
                 <h5 class="my-0">John Doe</h5>
                 <p class="my-0">Gerente</p>
             </div>
-            
+            <div id="logoutSection" class="logout-bar" style="display: none;">
+                <button class="btn btn-danger" onclick="logout()">Sair</button>
+            </div>
+
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">

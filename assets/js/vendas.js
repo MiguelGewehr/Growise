@@ -1,20 +1,13 @@
 function adicionarProduto(classeDadosProduto) {
     
     var produto = document.querySelector('.' + classeDadosProduto);
-
     var nome = produto.querySelector('h5').textContent;
-
     var dropdown = document.getElementById('dropdownMenuButton1');
-
     var quantidadeTexto = dropdown.textContent.trim();
-    
     // Converte para número
     var quantidade = parseInt(quantidadeTexto);
-
     var preco = produto.querySelector('.preco').textContent;
-
     var valor = convertToFloat(preco) * quantidade;
-
 
     // Criando a estrutura HTML
     var novoProduto = `
@@ -26,7 +19,6 @@ function adicionarProduto(classeDadosProduto) {
         <hr>
     `;
     
-
     // Inserindo a nova estrutura após o botão
     var container = document.querySelector('.container-pedidos');
     container.insertAdjacentHTML('beforeend', novoProduto);
@@ -137,6 +129,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Carregar os produtos ao carregar a página
     carregarProdutos();
+});
+
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+function logout() {
+    // Implement logout functionality here
+    // For example, redirect to logout page or clear session
+    alert('Logout button clicked!');
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
 });
 
 /*document.addEventListener("DOMContentLoaded", function() {
