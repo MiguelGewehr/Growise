@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Dados estáticos para teste
+    const dados_usuario = {
+        nome : "Ana Paula",
+        funcao : "Gerente"
+    };
+
+    const dados_venda_dia = {
+        total : '999',
+        qtd_produtos : '15',
+        qtd_produto_falta : '5',
+        lucro : 'R$6.500,00'
+    }
+
+    atualizarDadosUsuario(dados_usuario);
+    
+    atualizaDadosVendasDia(dados_venda_dia);
+});
+
+function atualizarDadosUsuario(dados) {
+    document.getElementById('nome-funcionario').innerText = dados.nome;
+    document.getElementById('funcao-funcionario').innerText = dados.funcao;
+}
+
+function atualizaDadosVendasDia(dados) {
+    document.getElementById('total-vendas').innerText = dados.total;
+    document.getElementById('produtos-vendidos').innerText = dados.qtd_produtos ;
+    document.getElementById('produtos-em-falta').innerText = dados.qtd_produto_falta;
+    document.getElementById('lucro').innerText = dados.lucro;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     fetchDashboardData();
 });
 
