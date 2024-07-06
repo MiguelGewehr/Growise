@@ -15,3 +15,7 @@
     border-color: #e46801;
     color: white;
 }
+
+.form-label {
+    display: block;
+}

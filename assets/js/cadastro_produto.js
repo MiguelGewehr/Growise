@@ -45,3 +45,9 @@ if(botao){
         }
     });
 }
+
+const botaoVoltar = document.getElementById('botaoVoltar');
+
+botaoVoltar.addEventListener('click', function() {
+    window.history.back();
+});

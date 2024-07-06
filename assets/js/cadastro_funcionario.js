@@ -1,6 +1,6 @@
-let botao = document.getElementById('botaoCadastrar');
+let botaoCadastrar = document.getElementById('botaoCadastrar');
 
-if(botao){
+if(botaoCadastrar){
     addEventListener('click', async function (event) {
     
         const nome = document.getElementById('nome').value;
@@ -41,3 +41,9 @@ if(botao){
         }
     });
 }
+
+const botaoVoltar = document.getElementById('botaoVoltar');
+
+botaoVoltar.addEventListener('click', function() {
+    window.history.back();
+});
