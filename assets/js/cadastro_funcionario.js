@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Dados estáticos para teste
+    const dados_usuario = {
+        nome : "Ana Paula",
+        funcao : "Gerente"
+    };
+
+    atualizarDadosUsuario(dados_usuario);
+});
+
+function atualizarDadosUsuario(dados) {
+    document.getElementById('nome-funcionario').innerText = dados.nome;
+    document.getElementById('funcao-funcionario').innerText = dados.funcao;
+}
+
 let botaoCadastrar = document.getElementById('botaoCadastrar');
 
 if(botaoCadastrar){
@@ -47,3 +63,4 @@ const botaoVoltar = document.getElementById('botaoVoltar');
 botaoVoltar.addEventListener('click', function() {
     window.history.back();
 });
+
