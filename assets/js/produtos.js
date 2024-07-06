@@ -48,9 +48,8 @@ function toggleLogout() {
 }
 
 function logout() {
-    // Implement logout functionality here
-    // For example, redirect to logout page or clear session
-    alert('Logout button clicked!');
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
 }
 
 // Add event listener to toggle logout section
