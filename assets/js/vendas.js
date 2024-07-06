@@ -166,9 +166,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
 
-        // Formate os dados em JSON
         const pedido = {
-            numeroPedido: document.querySelector('.container-pedidos p').innerText.split(' ')[2], // Obtém o número do pedido
+            numeroPedido: /*o numero do pedido não deveria vir do backend?*/,
             produtos: produtos,
             valorTotalPedido: valorTotalPedido
         };
@@ -177,11 +176,11 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch('URL_DO_SEU_BACKEND', {
             method: 'POST',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(pedido)
         })
-        .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
         })

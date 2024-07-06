@@ -1,3 +1,126 @@
+document.addEventListener('DOMContentLoaded', function() {
+    fetchDashboardData();
+});
+
+function fetchDashboardData() {
+    fetch(/*'URL da API para buscar os produtos';*/)
+        .then(response => response.json())
+        .then(data => {
+            updateDashboardMetrics(data);
+            updateCharts(data);
+        })
+        .catch(error => console.error('Erro ao buscar dados do dashboard:', error));
+}
+
+function updateDashboardMetrics(data) {
+    document.querySelector('.total-vendas').innerText = data.totalVendas;
+    document.querySelector('.produtos-vendidos').innerText = data.produtosVendidos;
+    document.querySelector('.produtos-em-falta').innerText = data.produtosEmFalta;
+    document.querySelector('.lucro').innerText = `R$ ${data.lucro.toFixed(2)}`;
+}
+/*
+function updateCharts(data) {
+    // Atualizar gráficos com Chart.js
+
+    const ctxMetas = document.getElementById('grafico-metas').getContext('2d');
+    new Chart(ctxMetas, {
+        type: 'bar',
+        data: {
+            labels: data.metas.labels,
+            datasets: [{
+                label: 'Lucro',
+                data: data.metas.data,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxSemana = document.getElementById('grafico-semana').getContext('2d');
+    new Chart(ctxSemana, {
+        type: 'line',
+        data: {
+            labels: data.semana.labels,
+            datasets: [{
+                label: 'Receita Total',
+                data: data.semana.data,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctxProdutos = document.getElementById('grafico-produtos').getContext('2d');
+    new Chart(ctxProdutos, {
+        type: 'pie',
+        data: {
+            labels: data.produtos.labels,
+            datasets: [{
+                label: 'Produtos Mais Vendidos',
+                data: data.produtos.data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+}*/
+
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
+});
+
+
 const ctxGraficoSemana = document.getElementById('grafico-semana');
 
 var myChart = new Chart(ctxGraficoSemana, {
@@ -116,25 +239,4 @@ const myHorizontalBarChart = new Chart(ctxGraficoProdutos, {
             }
         }
     }
-});
-
-function toggleLogout() {
-    var logoutSection = document.getElementById('logoutSection');
-
-    // Toggle visibility of logout section
-    if (logoutSection.style.display === 'none') {
-        logoutSection.style.display = 'block';
-    } else {
-        logoutSection.style.display = 'none';
-    }
-}
-
-function logout() {
-    localStorage.removeItem('token');
-    window.location.href = 'login.html';
-}
-
-// Add event listener to toggle logout section
-document.getElementById('infoSection').addEventListener('click', function() {
-    toggleLogout();
 });
