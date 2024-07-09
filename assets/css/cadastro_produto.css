@@ -30,3 +30,7 @@
     display: none;
     box-shadow: 0px 5px 30px 2px rgb(204, 204, 204);
 }
+
+#formulario{
+    width: 1300px;
+}
