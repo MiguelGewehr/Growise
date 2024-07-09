@@ -22,9 +22,12 @@
         <div class="" id="logo">
             <img src="assets/img/logo-sm.png" class="img-fluid">
         </div>
-        <div class="">
-            <h5 id="nome-funcionario" class="my-0">John Doe</h5>
+        <div class="info" id="infoSection">
+            <h5 id="nome-funcionario" class="my-0">João Silva</h5>
             <p id="funcao-funcionario" class="my-0">Gerente</p>
+        </div>
+        <div id="logoutSection" class="logout-bar" style="display: none;">
+            <button class="btn btn-danger" onclick="logout()">Sair</button>
         </div>
     </nav>
 
@@ -49,7 +52,7 @@
                                 <input type="text" class="form-control" id="precoCompra">
                             </div>
                             <div class="mb-3">
-                                <label for="estoqueInicial" class="form-label">Estoque inicial</label>
+                                <label for="estoqueInicial" class="form-label">Estoque mínimo</label>
                                 <input type="text" class="form-control" id="estoqueInicial">
                             </div>
                             <div class="mb-3">

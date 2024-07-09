@@ -1,3 +1,24 @@
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // Dados estáticos para teste

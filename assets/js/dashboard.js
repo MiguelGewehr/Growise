@@ -161,17 +161,10 @@ var myChart = new Chart(ctxGraficoSemana, {
         labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
         datasets: [
             {
-                label: 'Vendas Atual',
+                label: 'Número de vendas',
                 data: [12000, 15000, 5000, 15000, 10000, 12000, 20000],
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
                 borderColor: 'rgba(153, 102, 255, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Meta de Vendas',
-                data: [15000, 12000, 22000, 10000, 12000, 15000, 18000],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
             }
         ]

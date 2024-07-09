@@ -20,3 +20,36 @@
     display: none;
     box-shadow: 0px 5px 30px 2px rgb(204, 204, 204);
 }
+
+#grafico-produtos {
+    max-width: 100%;
+}
+
+#backgroundCol1 {
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Alterado para centralizar horizontalmente */
+    padding-left: 20px;
+    text-align: center;
+}
+
+#backgroundCol1 > h2 {
+    margin-bottom: 20px;
+}
+
+#backgroundCol1 > .bg-light {
+    width: 100%; /* Modificado para ocupar 100% da largura disponível */
+    max-width: 300px; /* Largura máxima para evitar ultrapassar */
+    text-align: center;
+    padding: 10px;
+}
+
+#divGrafico {
+    width: 900px;
+}
+
+#backgroundCol2 {
+    height: 580px;
+}

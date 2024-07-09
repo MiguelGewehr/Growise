@@ -73,53 +73,47 @@
 
     <section class="container-fluid my-5">
 
-        <div class="bg-white py-3 mx-3 rounded-4">
+        <div class="container">
+            <div class="d-flex mt-5 mx-3 gap-3 justify-content-between">
+                <!-- Coluna de Cards -->
+                <div class="col-md-3 d-flex flex-column">
+                    <div class="bg-white rounded-4 mb-3 p-3 d-flex flex-column" id="backgroundCol1">
+                        <h2>Vendas do dia</h2>
+                        <div class="bg-light d-flex flex-column align-items-center justify-content-center pt-3 rounded mb-3 flex-grow-1">
+                            <img src="assets/img/card-1.png">
+                            <p class="mt-2">Total de vendas</p>
+                            <p id="total-vendas">0</p>
+                        </div>
+                        <div class="bg-light d-flex flex-column align-items-center justify-content-center pt-3 rounded mb-3 flex-grow-1">
+                            <img src="assets/img/card-3.png">
+                            <p class="mt-2">Produtos vendidos</p>
+                            <p id="produtos-vendidos">0</p>
+                        </div>
+                        <div class="bg-light d-flex flex-column align-items-center justify-content-center pt-3 rounded mb-3 flex-grow-1">
+                            <img src="assets/img/card-5.png">
+                            <p class="mt-2">Lucro</p>
+                            <p id="lucro">R$ 00,00</p>
+                        </div>
+                    </div>                
+                </div>
             
-            <div class="row">
-                <div class="col-12 m-3">
-                    <h2>Vendas do dia</h2>
-                </div>
-            </div>
-        
-            <div class="row px-3">
-                <div class="col-3">
-                    <div class="w-75 bg-light d-flex flex-column align-items-center pt-3 rounded">
-                        <img src="assets/img/card-1.png">
-                        <p class="mt-2">Total de vendas</p>
-                        <p id="total-vendas">0</p>
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="w-75 bg-light d-flex flex-column align-items-center pt-3 rounded">
-                        <img src="assets/img/card-3.png">
-                        <p class="mt-2">Produtos vendidos</p>
-                        <p id="produtos-vendidos">0</p>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="w-75 bg-light d-flex flex-column align-items-center pt-3 rounded">
-                        <img src="assets/img/card-4.png">
-                        <p class="mt-2">Produtos em falta</p>
-                        <p id="produtos-em-falta">0</p>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="w-75 bg-light d-flex flex-column align-items-center pt-3 rounded">
-                        <img src="assets/img/card-5.png">
-                        <p class="mt-2">Lucro</p>
-                        <p id="lucro">R$ 00,00</p>
+                <!-- Coluna do Gráfico -->
+                <div class="d-flex align-items-start" id="divGrafico">
+                    <div class="bg-white rounded-4 p-3 w-100 d-flex flex-column" id="backgroundCol2">
+                        <h2>Produtos mais vendidos</h2>
+                        <div class="chart-container grafico flex-grow-1">
+                            <canvas id="grafico-produtos"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
 
         <div class="row mt-5 mx-3 gap-3">
                 <div class="bg-white col rounded-4">
                     <div class="m-1">
-                        <h2>Lucro</h2>
+                        <h2>Lucro por mês</h2>
                     </div>
                     <div>
                         <canvas id="grafico-metas"></canvas>
@@ -127,7 +121,7 @@
                 </div>
                 <div class="bg-white col rounded-4">
                     <div class="m-1">
-                        <h2>Receita total</h2>
+                        <h2>Vendas por dia da semana</h2>
                     </div>
                     <div>
                         <canvas id="grafico-semana"></canvas>
@@ -136,14 +130,6 @@
             </div>
         </div>
         
-        <div class="row mt-5 bg-white mx-3 rounded-4">
-            <div class="m-3">
-                <h2>Produtos mais vendidos</h2>
-            </div>
-            <div class="chart-container grafico">
-                <canvas id="grafico-produtos"></canvas>
-            </div>
-        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

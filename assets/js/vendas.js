@@ -43,6 +43,27 @@ function convertToFloat(currencyStr) {
     return numberFloat;
 }
 
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     //gera o card dos produtos
     const apiUrl = /*'URL da API para buscar os produtos';*/
@@ -167,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         const pedido = {
-            numeroPedido: /*o numero do pedido não deveria vir do backend?*/,
+            //numeroPedido: /*o numero do pedido não deveria vir do backend?*/,
             produtos: produtos,
             valorTotalPedido: valorTotalPedido
         };
@@ -189,27 +210,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-});
-
-function toggleLogout() {
-    var logoutSection = document.getElementById('logoutSection');
-
-    // Toggle visibility of logout section
-    if (logoutSection.style.display === 'none') {
-        logoutSection.style.display = 'block';
-    } else {
-        logoutSection.style.display = 'none';
-    }
-}
-
-function logout() {
-    localStorage.removeItem('token');
-    window.location.href = 'login.html';
-}
-
-// Add event listener to toggle logout section
-document.getElementById('infoSection').addEventListener('click', function() {
-    toggleLogout();
 });
 
 /*document.addEventListener("DOMContentLoaded", function() {
