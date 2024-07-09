@@ -15,7 +15,6 @@
 
     <nav class="navbar bg-white">
         <div class="container-fluid">
-
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -39,6 +38,7 @@
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
+
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
@@ -49,6 +49,7 @@
                                 <a class="nav-link active" aria-current="page" href="dashboard.html">Dados</a>
                             </div>
                         </li>
+
                         <li class="nav-item">
                             <div class="d-flex align-items-center">
                                 <div class="mx-2">
@@ -57,6 +58,7 @@
                                 <a class="nav-link" href="produtos.html">Produtos</a>
                             </div>
                         </li>
+
                         <li class="nav-item">
                             <div class="d-flex align-items-center">
                                 <div class="mx-2">
@@ -75,7 +77,6 @@
 
         <div class="container">
             <div class="d-flex mt-5 mx-3 gap-3 justify-content-between">
-                <!-- Coluna de Cards -->
                 <div class="col-md-3 d-flex flex-column">
                     <div class="bg-white rounded-4 mb-3 p-3 d-flex flex-column" id="backgroundCol1">
                         <h2>Vendas do dia</h2>
@@ -97,7 +98,6 @@
                     </div>                
                 </div>
             
-                <!-- Coluna do Gráfico -->
                 <div class="d-flex align-items-start" id="divGrafico">
                     <div class="bg-white rounded-4 p-3 w-100 d-flex flex-column" id="backgroundCol2">
                         <h2>Produtos mais vendidos</h2>
@@ -119,6 +119,7 @@
                         <canvas id="grafico-metas"></canvas>
                     </div>
                 </div>
+                
                 <div class="bg-white col rounded-4">
                     <div class="m-1">
                         <h2>Vendas por dia da semana</h2>
