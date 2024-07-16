@@ -9,6 +9,14 @@ Seu propósito principal é fornecer uma plataforma para o cadastro de produtos,
 
 O sistema visa centralizar informações e facilitar o controle de vendas, permitindo acesso rápido a dados relevantes para uma gestão eficaz.
 
+## Exemplo de uso
+
+O sistema permite que qualquer tipo de loja cadastre seus produtos e funcionários, para que possam ser feitas as vendas.
+![608ec175-8a37-4a0f-ade2-7640faa94aad](https://github.com/user-attachments/assets/da02d8f0-fd71-4927-941a-e05161531354)
+
+A integração faz com que as informações das vendas sejam salvas automaticamente, fazendo com o que o gerente consiga ter acesso à diferentes métricas da loja.
+![a81e7c29-a067-4fbc-9bc7-a57d71935eb1](https://github.com/user-attachments/assets/cbce0436-4d09-49b4-87b5-dd29c3843fa5)
+
 ## Instalação
 
 OS X & Linux:
@@ -22,15 +30,6 @@ Windows:
 ```sh
 edit autoexec.bat
 ```
-
-## Exemplo de uso
-
-O sistema permite que qualquer tipo de loja cadastre seus produtos e funcionários, para que possam ser feitas as vendas.
-![608ec175-8a37-4a0f-ade2-7640faa94aad](https://github.com/user-attachments/assets/da02d8f0-fd71-4927-941a-e05161531354)
-
-A integração faz com que as informações das vendas sejam salvas automaticamente, fazendo com o que o gerente consiga ter acesso à diferentes métricas da loja.
-![a81e7c29-a067-4fbc-9bc7-a57d71935eb1](https://github.com/user-attachments/assets/cbce0436-4d09-49b4-87b5-dd29c3843fa5)
-
 
 ## Configuração para Desenvolvimento
 
