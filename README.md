@@ -51,13 +51,9 @@ npm test
 * 0.0.1
     * Trabalho em andamento
 
-## Meta
+## Licença
 
-Seu Nome – [@SeuNome](https://twitter.com/...) – SeuEmail@exemplo.com
-
-Distribuído sob a licença XYZ. Veja `LICENSE`[license] para mais informações.
-
-[https://github.com/yourname/github-link](https://github.com/othonalberto/)
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE][license] para mais informações.
 
 ## Contributing
 
