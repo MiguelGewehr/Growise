@@ -1,4 +1,4 @@
-# GROWISE ![](/assets/img/logo-sm.png)
+# ![](/assets/img/logo-sm.png) GROWISE
 
 O Growise é uma aplicação web projetada para atender às necessidades de gestão de lojas. 
 
