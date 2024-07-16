@@ -1,13 +1,12 @@
-# Nome do produto
-> Descrição curta sobre o que seu projeto faz.
+# GROWISE
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+O Growise é uma aplicação web projetada para atender às necessidades de gestão de lojas. 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+Seu propósito principal é fornecer uma plataforma para o cadastro de produtos, gerenciamento de vendas e controle de dados essenciais das lojas, como receita, lucro e estoque. 
 
-![](../header.png)
+O sistema visa centralizar informações e facilitar o controle de vendas, permitindo acesso rápido a dados relevantes para uma gestão eficaz.
+
+![](/assets/img/Logo.png)
 
 ## Instalação
 
