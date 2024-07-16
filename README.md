@@ -6,7 +6,7 @@ Seu propósito principal é fornecer uma plataforma para o cadastro de produtos,
 
 O sistema visa centralizar informações e facilitar o controle de vendas, permitindo acesso rápido a dados relevantes para uma gestão eficaz.
 
-![](/assets/img/Logo.png)
+![](/assets/img/logo-sm.png)
 
 ## Instalação
 
