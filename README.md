@@ -55,7 +55,7 @@ npm test
 
 Seu Nome – [@SeuNome](https://twitter.com/...) – SeuEmail@exemplo.com
 
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
+Distribuído sob a licença XYZ. Veja `LICENSE`[license] para mais informações.
 
 [https://github.com/yourname/github-link](https://github.com/othonalberto/)
 
@@ -68,3 +68,4 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 5. Crie um novo _Pull Request_
 
 [wiki]: https://github.com/MiguelGewehr/Growise/wiki
+[license]: https://github.com/MiguelGewehr/Growise/blob/main/LICENSE
