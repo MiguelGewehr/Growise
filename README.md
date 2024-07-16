@@ -1,11 +1,13 @@
-# ![](/assets/img/logo-sm.png) GROWISE
+<div align="center">
+  <img title="logo" src="/assets/img/logo-sm.png"/>
+  <h1 align="center">GROWISE</h1>
+</div>
 
 O Growise é uma aplicação web projetada para atender às necessidades de gestão de lojas. 
 
 Seu propósito principal é fornecer uma plataforma para o cadastro de produtos, gerenciamento de vendas e controle de dados essenciais das lojas, como receita, lucro e estoque. 
 
 O sistema visa centralizar informações e facilitar o controle de vendas, permitindo acesso rápido a dados relevantes para uma gestão eficaz.
-
 
 ## Instalação
 
