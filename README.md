@@ -1,5 +1,5 @@
 <div align="center">
-  <img title="logo" src="/assets/img/logo-sm.png"/>
+  <img title="logo" src="frontend/assets/img/logo-sm.png"/>
   <h1 align="center">GROWISE</h1>
 </div>
 
