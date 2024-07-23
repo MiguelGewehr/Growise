@@ -39,6 +39,12 @@ Descreva como instalar todas as dependências para desenvolvimento e como rodar 
 make install
 npm test
 ```
+### Documentação JavaScript com JSDoc
+```sh
+npm init -y
+npm i -D jsdoc
+npm run doc
+```
 
 ## Licença
 
