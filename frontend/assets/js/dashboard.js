@@ -7,33 +7,33 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const dados_venda_dia = {
-        total : '999',
-        qtd_produtos : '15',
-        qtd_produto_falta : '5',
+        totalVendas : '999',
+        produtosVendidos : '15',
+        produtosEmFalta : '5',
         lucro : 'R$6.500,00'
     }
 
     atualizarDadosUsuario(dados_usuario);
     
-    atualizaDadosVendasDia(dados_venda_dia);
+    updateDashboardMetrics(dados_venda_dia);
 });
 
+/**
+ * Função para atualizar dados do funcionário
+ * @param {Object} dados - dados do funcionário
+ */
 function atualizarDadosUsuario(dados) {
     document.getElementById('nome-funcionario').innerText = dados.nome;
     document.getElementById('funcao-funcionario').innerText = dados.funcao;
-}
-
-function atualizaDadosVendasDia(dados) {
-    document.getElementById('total-vendas').innerText = dados.total;
-    document.getElementById('produtos-vendidos').innerText = dados.qtd_produtos ;
-    document.getElementById('produtos-em-falta').innerText = dados.qtd_produto_falta;
-    document.getElementById('lucro').innerText = dados.lucro;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchDashboardData();
 });
 
+/**
+ * Função para buscar dados do dashboard
+ */
 function fetchDashboardData() {
     fetch(/*'URL da API para buscar os produtos';*/)
         .then(response => response.json())
@@ -44,93 +44,20 @@ function fetchDashboardData() {
         .catch(error => console.error('Erro ao buscar dados do dashboard:', error));
 }
 
+/**
+ * Função para atualizar dados de vendas do dia
+ * @param {Object} dados - dados de vendas do dia
+ */
 function updateDashboardMetrics(data) {
     document.querySelector('.total-vendas').innerText = data.totalVendas;
     document.querySelector('.produtos-vendidos').innerText = data.produtosVendidos;
     document.querySelector('.produtos-em-falta').innerText = data.produtosEmFalta;
     document.querySelector('.lucro').innerText = `R$ ${data.lucro.toFixed(2)}`;
 }
-/*
-function updateCharts(data) {
-    // Atualizar gráficos com Chart.js
 
-    const ctxMetas = document.getElementById('grafico-metas').getContext('2d');
-    new Chart(ctxMetas, {
-        type: 'bar',
-        data: {
-            labels: data.metas.labels,
-            datasets: [{
-                label: 'Lucro',
-                data: data.metas.data,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const ctxSemana = document.getElementById('grafico-semana').getContext('2d');
-    new Chart(ctxSemana, {
-        type: 'line',
-        data: {
-            labels: data.semana.labels,
-            datasets: [{
-                label: 'Receita Total',
-                data: data.semana.data,
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const ctxProdutos = document.getElementById('grafico-produtos').getContext('2d');
-    new Chart(ctxProdutos, {
-        type: 'pie',
-        data: {
-            labels: data.produtos.labels,
-            datasets: [{
-                label: 'Produtos Mais Vendidos',
-                data: data.produtos.data,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
-}*/
-
+/**
+ * Função para exibir ou ocultar a seção de logout
+ */
 function toggleLogout() {
     var logoutSection = document.getElementById('logoutSection');
 
@@ -142,20 +69,24 @@ function toggleLogout() {
     }
 }
 
+/**
+ * Função para realizar logout do sistema
+ */
 function logout() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';
 }
 
-// Add event listener to toggle logout section
 document.getElementById('infoSection').addEventListener('click', function() {
     toggleLogout();
 });
 
 
-const ctxGraficoSemana = document.getElementById('grafico-semana');
-
-var myChart = new Chart(ctxGraficoSemana, {
+/**
+ * Gráfico de vendas por semana
+ * @type {HTMLCanvasElement}
+ */
+var myChart = new Chart(document.getElementById('grafico-semana'), {
     type: 'bar',
     data: {
         labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
@@ -179,9 +110,11 @@ var myChart = new Chart(ctxGraficoSemana, {
     }
 });
 
-const ctxGraficoMetas = document.getElementById('grafico-metas');
-
-var myLineChart = new Chart(ctxGraficoMetas, {
+/**
+ * Gráfico de metas
+ * @type {HTMLCanvasElement}
+ */
+var myLineChart = new Chart(document.getElementById('grafico-metas'), {
     type: 'line',
     data: {
         labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
@@ -215,9 +148,11 @@ var myLineChart = new Chart(ctxGraficoMetas, {
     }
 });
 
-
-const ctxGraficoProdutos = document.getElementById('grafico-produtos').getContext('2d');
-const myHorizontalBarChart = new Chart(ctxGraficoProdutos, {
+/**
+ * Gráfico de produtos
+ * @type {HTMLCanvasElement}
+ */
+const myHorizontalBarChart = new Chart(document.getElementById('grafico-produtos').getContext('2d'), {
     type: 'bar',
     data: {
         labels: ['Camiseta Lisa', 'Jaqueta Jeans', 'Calça Preta', 'Casaco Mooleton', 'Tênis', 'Bolsa Azul'],

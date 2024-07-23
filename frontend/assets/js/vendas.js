@@ -1,7 +1,10 @@
 var valorTotalPedido = 0;
 
-function adicionarProduto(classeDadosProduto) {
-    
+/**
+ * Função para adicionar um produto ao pedido
+ * @param {string} classeDadosProduto - classe do produto
+ */
+function adicionarProduto(classeDadosProduto) {    
     var produto = document.querySelector('.' + classeDadosProduto);
     var nome = produto.querySelector('h5').textContent;
     var dropdown = document.getElementById('dropdownMenuButton1');
@@ -32,6 +35,11 @@ function adicionarProduto(classeDadosProduto) {
     document.getElementById('valorTotal').textContent = `Valor total: R$ ${valorTotalPedido.toFixed(2).replace(".", ",")}`;
 }
 
+/**
+ * Função para converter uma string de moeda para float
+ * @param {string} currencyStr - string de moeda
+ * @returns número convertido para float
+ */
 function convertToFloat(currencyStr) {
     // Remove o símbolo de moeda e espaços em branco
     let numberStr = currencyStr.replace('R$', '').trim();
@@ -43,6 +51,9 @@ function convertToFloat(currencyStr) {
     return numberFloat;
 }
 
+/**
+ * Função para exibir ou ocultar a seção de logout
+ */
 function toggleLogout() {
     var logoutSection = document.getElementById('logoutSection');
 
@@ -54,6 +65,9 @@ function toggleLogout() {
     }
 }
 
+/**
+ * Função para realizar logout do sistema
+ */
 function logout() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';
@@ -68,6 +82,12 @@ document.addEventListener("DOMContentLoaded", function() {
     //gera o card dos produtos
     const apiUrl = /*'URL da API para buscar os produtos';*/
 
+    /**
+     * Função para criar um card de produto
+     * @param {Object} produto - dados do produto
+     * @param {number} index - índice do produto
+     * @returns card do produto
+     */
     function criarCardProduto(produto, index) {
         const card = document.createElement('div');
         card.className = 'col-4';
@@ -109,6 +129,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return card;
     }
 
+    /**
+     * Função para carregar produtos e preencher a página
+     */
     function carregarProdutos() {
         fetch(apiUrl)
             .then(response => response.json())
@@ -126,12 +149,13 @@ document.addEventListener("DOMContentLoaded", function() {
     carregarProdutos();
 
 
-
-
-
     //gera a barra do pedido
     const maxNumber = 10; // Você pode mudar esse valor para quantos números quiser
 
+    /**
+     * Função que completa o dropdown menu com números
+     * @param {Object} dropdownMenu - menu dropdown
+     */
     function populateDropdownMenu(dropdownMenu) {
         // Limpa o conteúdo do menu antes de adicionar novos itens
         dropdownMenu.innerHTML = '';
@@ -152,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Adiciona event listeners para os botões que abrem os offcanvas
     const offcanvasButtons = document.querySelectorAll('[data-bs-toggle="offcanvas"]');
+
     offcanvasButtons.forEach(button => {
         button.addEventListener('click', function() {
             const targetId = button.getAttribute('href');
@@ -160,10 +185,6 @@ document.addEventListener("DOMContentLoaded", function() {
             populateDropdownMenu(dropdownMenu);
         });
     });
-
-
-
-
 
 
     //cadastra venda

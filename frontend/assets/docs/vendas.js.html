@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: vendas.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: vendas.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var valorTotalPedido = 0;
+
+/**
+ * Função para adicionar um produto ao pedido
+ * @param {string} classeDadosProduto - classe do produto
+ */
+function adicionarProduto(classeDadosProduto) {    
+    var produto = document.querySelector('.' + classeDadosProduto);
+    var nome = produto.querySelector('h5').textContent;
+    var dropdown = document.getElementById('dropdownMenuButton1');
+    var quantidadeTexto = dropdown.textContent.trim();
+    // Converte para número
+    var quantidade = parseInt(quantidadeTexto);
+    var preco = produto.querySelector('.preco').textContent;
+    var valor = convertToFloat(preco) * quantidade;
+
+    valorTotalPedido += valor;
+
+    // Criando a estrutura HTML
+    var novoProduto = `
+        &lt;div class="ms-4">
+            &lt;div class="produto-item">
+                &lt;p class="nome-produto">`+ nome +`&lt;/p>
+                &lt;p class="quantidade-produto">Quantidade: ` + quantidadeTexto + `&lt;/p>
+                &lt;p class="valor-total-produto">Valor: R$` + valor.toFixed(2).replace(".", ",") + `&lt;/p>
+            &lt;/div>
+        &lt;/div>
+        &lt;hr>
+    `;
+    
+    // Inserindo a nova estrutura após o botão
+    var container = document.querySelector('.container-pedidos');
+    container.insertAdjacentHTML('beforeend', novoProduto);
+
+    document.getElementById('valorTotal').textContent = `Valor total: R$ ${valorTotalPedido.toFixed(2).replace(".", ",")}`;
+}
+
+/**
+ * Função para converter uma string de moeda para float
+ * @param {string} currencyStr - string de moeda
+ * @returns número convertido para float
+ */
+function convertToFloat(currencyStr) {
+    // Remove o símbolo de moeda e espaços em branco
+    let numberStr = currencyStr.replace('R$', '').trim();
+    // Substitui a vírgula por um ponto
+    numberStr = numberStr.replace(',', '.');
+    // Converte a string para float
+    let numberFloat = parseFloat(numberStr);
+
+    return numberFloat;
+}
+
+/**
+ * Função para exibir ou ocultar a seção de logout
+ */
+function toggleLogout() {
+    var logoutSection = document.getElementById('logoutSection');
+
+    // Toggle visibility of logout section
+    if (logoutSection.style.display === 'none') {
+        logoutSection.style.display = 'block';
+    } else {
+        logoutSection.style.display = 'none';
+    }
+}
+
+/**
+ * Função para realizar logout do sistema
+ */
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+}
+
+// Add event listener to toggle logout section
+document.getElementById('infoSection').addEventListener('click', function() {
+    toggleLogout();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    //gera o card dos produtos
+    const apiUrl = /*'URL da API para buscar os produtos';*/
+
+    /**
+     * Função para criar um card de produto
+     * @param {Object} produto - dados do produto
+     * @param {number} index - índice do produto
+     * @returns card do produto
+     */
+    function criarCardProduto(produto, index) {
+        const card = document.createElement('div');
+        card.className = 'col-4';
+        card.innerHTML = `
+            &lt;div class="card">
+                &lt;a data-bs-toggle="offcanvas" href="#offcanvas-produto-${index}" role="button" aria-controls="offcanvas-produto-${index}">
+                    &lt;img src="${produto.imagem}" alt="${produto.nome}" class="card-img-top">
+                &lt;/a>
+                &lt;div class="card-body">
+                    &lt;h5 class="card-title">${produto.nome}&lt;/h5>
+                    &lt;p class="card-text">R$${produto.preco_venda.toFixed(2)}&lt;/p>
+                    &lt;p class="card-text">Quantidade em estoque: ${produto.quantidade}&lt;/p>
+                &lt;/div>
+                &lt;div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-produto-${index}" aria-labelledby="offcanvas-produto-${index}Label">
+                    &lt;div class="d-flex flex-column align-items-center dados_produtos">
+                        &lt;img class="img-fluid p-5" src="${produto.imagem}" alt="${produto.nome}">
+                        &lt;h5 class="text-center">${produto.nome}&lt;/h5>
+                        &lt;p class="text-center preco">R$${produto.preco_venda.toFixed(2)}&lt;/p>
+                        &lt;p class="text-center px-3">Descrição do produto: ${produto.descricao}&lt;/p>
+                        &lt;p class="text-center">Marca: ${produto.marca}&lt;/p>
+                        &lt;p class="text-center">Fornecedor: ${produto.fornecedor}&lt;/p>
+                        &lt;h6 class="mx-1">Quantidade:&lt;/h6>
+                        &lt;div class="dropdown">
+                            &lt;button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${produto.quantidade}"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                Selecione um número
+                            &lt;/button>
+                            &lt;ul class="dropdown-menu" aria-labelledby="dropdownMenuButton${produto.quantidade}" id="dropdownMenu${produto.quantidade}">
+                                &lt;!-- Opções serão adicionadas dinamicamente aqui -->
+                            &lt;/ul>
+                        &lt;/div>
+                        &lt;div class="d-flex flex-column align-items-center my-3">
+                            &lt;button type="button" class="btn btn-primary" onclick="adicionarProduto(${produto.quantidade})">Adicionar&lt;/button>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        `;
+        return card;
+    }
+
+    /**
+     * Função para carregar produtos e preencher a página
+     */
+    function carregarProdutos() {
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.querySelector('.container-fluid .row');
+                container.innerHTML = ''; // Limpa os produtos existentes
+                data.forEach((produto) => {
+                    const card = criarCardProduto(produto);
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar produtos:', error));
+    }
+    
+    carregarProdutos();
+
+
+    //gera a barra do pedido
+    const maxNumber = 10; // Você pode mudar esse valor para quantos números quiser
+
+    /**
+     * Função que completa o dropdown menu com números
+     * @param {Object} dropdownMenu - menu dropdown
+     */
+    function populateDropdownMenu(dropdownMenu) {
+        // Limpa o conteúdo do menu antes de adicionar novos itens
+        dropdownMenu.innerHTML = '';
+
+        for (let i = 1; i &lt;= maxNumber; i++) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+            a.className = 'dropdown-item';
+            a.href = '#';
+            a.textContent = i;
+            a.addEventListener('click', function() {
+                document.getElementById('dropdownMenuButton1').textContent = i;
+            });
+            li.appendChild(a);
+            dropdownMenu.appendChild(li);
+        }
+    }
+
+    // Adiciona event listeners para os botões que abrem os offcanvas
+    const offcanvasButtons = document.querySelectorAll('[data-bs-toggle="offcanvas"]');
+
+    offcanvasButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = button.getAttribute('href');
+            const offcanvas = document.querySelector(targetId);
+            const dropdownMenu = offcanvas.querySelector('#dropdownMenu');
+            populateDropdownMenu(dropdownMenu);
+        });
+    });
+
+
+    //cadastra venda
+    document.getElementById('botaoVenda').addEventListener('click', function () {
+        // Colete os dados dos produtos na aba do pedido
+        let produtos = [];
+        const pedidoLateral = document.getElementById('abaPedidoLateral');
+        const produtosElementos = pedidoLateral.querySelectorAll('.produto-item');
+        const valorTotalPedido = 0;
+
+        produtosElementos.forEach(function (produtoElemento) {
+            const nomeProduto = produtoElemento.querySelector('.nome-produto').innerText;
+            const quantidadeProduto = produtoElemento.querySelector('.quantidade-produto').innerText;
+            const valorTotalProduto = produtoElemento.querySelector('.valor-total-produto').innerText;
+            valorTotalPedido += valorTotalProduto;
+
+            produtos.push({
+                nome: nomeProduto,
+                quantidade: quantidadeProduto,
+                valorTotalProduto: valorTotalProduto
+            });
+        });
+
+        const pedido = {
+            //numeroPedido: /*o numero do pedido não deveria vir do backend?*/,
+            produtos: produtos,
+            valorTotalPedido: valorTotalPedido
+        };
+
+        // Envie os dados ao backend
+        fetch('URL_DO_SEU_BACKEND', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pedido)
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+
+});
+
+/*document.addEventListener("DOMContentLoaded", function() {
+    const dropdownMenu = document.getElementsById('dropdownMenu');
+    const maxNumber = 10; // Você pode mudar esse valor para quantos números quiser
+
+    for (let i = 1; i &lt;= maxNumber; i++) {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.className = 'dropdown-item';
+        a.href = '#';
+        a.textContent = i;
+        a.addEventListener('click', function() {
+            document.getElementById('dropdownMenuButton1').textContent = i;
+        });
+        li.appendChild(a);
+        dropdownMenu.appendChild(li);
+    }
+});*/</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#adicionarProduto">adicionarProduto</a></li><li><a href="global.html#atualizarDadosUsuario">atualizarDadosUsuario</a></li><li><a href="global.html#convertToFloat">convertToFloat</a></li><li><a href="global.html#fetchDashboardData">fetchDashboardData</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#myChart">myChart</a></li><li><a href="global.html#myHorizontalBarChart">myHorizontalBarChart</a></li><li><a href="global.html#myLineChart">myLineChart</a></li><li><a href="global.html#toggleLogout">toggleLogout</a></li><li><a href="global.html#updateDashboardMetrics">updateDashboardMetrics</a></li><li><a href="global.html#voltarPagina">voltarPagina</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Tue Jul 23 2024 14:52:25 GMT-0300 (Horário Padrão de Brasília)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

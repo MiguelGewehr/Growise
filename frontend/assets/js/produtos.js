@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const apiUrl = /*'URL da API para buscar os produtos';*/
 
-    // Função para criar um card de produto
+    /**
+     * Função para criar novo card de produto
+     * @param {Object} produto - dados do produto
+     * @returns card de produto
+     */
     function criarCardProduto(produto) {
         const card = document.createElement('div');
         card.className = 'col-3';
@@ -18,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
 
-    // Função para buscar os produtos e preencher a página
+    /**
+     * Função para carregar produtos e preencher a página
+     */
     function carregarProdutos() {
         fetch(apiUrl)
             .then(response => response.json())
@@ -36,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
     carregarProdutos();
 });
 
+/**
+ * Função para exibir ou ocultar a seção de logout
+ */
 function toggleLogout() {
     var logoutSection = document.getElementById('logoutSection');
 
@@ -47,12 +56,14 @@ function toggleLogout() {
     }
 }
 
+/**
+ * Função para realizar logout do sistema
+ */
 function logout() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';
 }
 
-// Add event listener to toggle logout section
 document.getElementById('infoSection').addEventListener('click', function() {
     toggleLogout();
 });

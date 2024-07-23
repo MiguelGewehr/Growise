@@ -1,6 +1,7 @@
-let botao = document.getElementById('botaoEntrar');
-
-if(botao){
+/**
+ * Função para fazer login
+ */
+if(document.getElementById('botaoEntrar')){
     botao.addEventListener('click', async function() {
 
         const login = document.getElementById('email').value;
