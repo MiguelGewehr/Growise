@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "main": "cadastro_funcionario.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "jsdoc": "^4.0.3"
+  },
+  "dependencies": {
+    "jsdom": "^24.1.1"
   }
 }
