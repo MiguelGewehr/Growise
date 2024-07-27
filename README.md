@@ -21,6 +21,8 @@ A integração faz com que as informações das vendas sejam salvas automaticame
 
 ```sh
 npm install jest-environment-jsdom --save-dev
+npm init -y
+npm i -D jsdoc
 ```
 
 ## Configuração para Desenvolvimento
@@ -32,8 +34,6 @@ npm test
 
 ### Documentação JavaScript com JSDoc
 ```sh
-npm init -y
-npm i -D jsdoc
 npm run doc
 ```
 
