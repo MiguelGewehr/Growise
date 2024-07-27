@@ -19,26 +19,17 @@ A integração faz com que as informações das vendas sejam salvas automaticame
 
 ## Instalação
 
-OS X & Linux:
-
 ```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
+npm install jest-environment-jsdom --save-dev
 ```
 
 ## Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
+### Rodar testes
 ```sh
-make install
 npm test
 ```
+
 ### Documentação JavaScript com JSDoc
 ```sh
 npm init -y
