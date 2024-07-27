@@ -24,7 +24,7 @@ sudo apt install nodejs
 sudo apt install npm
 npm init -y
 npm install jest-environment-jsdom --save-dev
-npm i -D jsdoc
+npm install --save-dev jsdoc
 ```
 
 ## Configuração para Desenvolvimento
