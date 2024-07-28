@@ -24,6 +24,7 @@ sudo apt install nodejs
 sudo apt install npm
 npm init -y
 npm install jest-environment-jsdom --save-dev
+npm install --save-dev jest jest-fetch-mock
 npm install --save-dev jsdoc
 ```
 
