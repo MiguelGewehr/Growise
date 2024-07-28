@@ -23,7 +23,7 @@ A integração faz com que as informações das vendas sejam salvas automaticame
 sudo apt install nodejs
 sudo apt install npm
 npm init -y
-npm install jest-environment-jsdom --save-dev
+npm install jest jest-environment-jsdom --save-dev
 npm install --save-dev jest jest-fetch-mock
 npm install --save-dev jsdoc
 ```
