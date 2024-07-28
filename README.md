@@ -26,6 +26,7 @@ npm init -y
 npm install jest jest-environment-jsdom --save-dev
 npm install --save-dev jest jest-fetch-mock
 npm install --save-dev jsdoc
+npm install whatwg-fetch --save-dev
 ```
 
 ## Configuração para Desenvolvimento
