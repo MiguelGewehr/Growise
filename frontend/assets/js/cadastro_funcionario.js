@@ -20,16 +20,16 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-document.getElementById('infoSection').addEventListener('click', function() {
+document.getElementById('infoSection').addEventListener('click', function () {
     toggleLogout();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // Dados estáticos para teste
     const dados_usuario = {
-        nome : "Ana Paula",
-        funcao : "Gerente"
+        nome: localStorage.getItem("user"),
+        funcao: localStorage.getItem("role")
     };
 
     atualizarDadosUsuario(dados_usuario);
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * @param {Object} dados - dados do funcionário
  */
 function atualizarDadosUsuario(dados) {
-    document.getElementById('nome-funcionario').innerText = dados.nome;
+    document.getElementById('nome-funcionario').innerText = localStorage.getItem("user");
     document.getElementById('funcao-funcionario').innerText = dados.funcao;
 }
 
@@ -48,27 +48,38 @@ function atualizarDadosUsuario(dados) {
  * Função para salvar o cadastro de um novo funcionário
  */
 document.getElementById('botaoCadastrar').addEventListener('click', async function (event) {
-        
+
     const nome = document.getElementById('nome').value;
     const cpf = document.getElementById('cpf').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
+
+
     const funcao = document.getElementById('funcao').value;
+    var role;
+    if (funcao == 1) {
+        role = "ADMIN"
+
+    } else {
+        role = "USER"
+    }
 
     const data = {
-        nome: nome,
+        name: nome,
         cpf: cpf,
         email: email,
-        senha: senha,
-        funcao: funcao
+        password: senha,
+        role: role
     };
 
     try {
-        const response = await fetch('http://localhost:8080/auth/cadastro_funcionario', {
+        const response = await fetch('http://localhost:8080/auth/register', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+
             },
             body: JSON.stringify(data)
         });
@@ -91,10 +102,9 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
 /**
  * Função para voltar para a página anterior
  */
-function voltarPagina(){
-    const botaoVoltar = document.getElementById('botaoVoltar');
 
-    botaoVoltar.addEventListener('click', function() {
-        window.history.back();
-    });
-}
+const botaoVoltar = document.getElementById('botaoVoltar');
+
+botaoVoltar.addEventListener('click', function () {
+    window.history.back();
+});

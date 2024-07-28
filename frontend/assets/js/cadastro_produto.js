@@ -21,16 +21,16 @@ function logout() {
 }
 
 // Add event listener to toggle logout section
-document.getElementById('infoSection').addEventListener('click', function() {
+document.getElementById('infoSection').addEventListener('click', function () {
     toggleLogout();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // Dados estáticos para teste
     const dados_usuario = {
-        nome : "Miguel",
-        funcao : "Gerente"
+        nome: localStorage.getItem("user"),
+        funcao: "Gerente"
     };
 
     atualizarDadosUsuario(dados_usuario);
@@ -51,19 +51,18 @@ function atualizarDadosUsuario(dados) {
 document.getElementById('botaoCadastrar').addEventListener('click', async function (event) {
 
     const nome = document.getElementById('nome').value;
-    const precoCompra = document.getElementById('preco_compra').value;
-    const estoque = document.getElementById('estoque').value;
+    const precoCompra = document.getElementById('precoCompra').value;
+    //const estoque = document.getElementById('estoqueInicial').value;
     const marca = document.getElementById('marca').value;
     const fornecedor = document.getElementById('fornecedor').value;
-    const precoVenda = document.getElementById('preco_venda').value;
-    const quantidade = document.getElementById('quantidade').value;
+    const precoVenda = document.getElementById('precoVenda').value;
+    const quantidade = document.getElementById('estoqueInicial').value;
     const descricao = document.getElementById('descricao').value;
 
 
     const data = {
         nome: nome,
         precoCompra: precoCompra,
-        estoque: estoque,
         marca: marca,
         fornecedor: fornecedor,
         precoVenda: precoVenda,
@@ -72,11 +71,13 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
     };
 
     try {
-        const response = await fetch('http://localhost:8080/auth/cadastro_produto', {
+        const response = await fetch('http://localhost:8080/produto', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+
             },
             body: JSON.stringify(data)
         });
@@ -95,10 +96,9 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
 /**
  * Função para voltar a página anterior
  */
-function voltarPagina(){
+
     const botaoVoltar = document.getElementById('botaoVoltar');
 
-    botaoVoltar.addEventListener('click', function() {
+    botaoVoltar.addEventListener('click', function () {
         window.history.back();
     });
-}
