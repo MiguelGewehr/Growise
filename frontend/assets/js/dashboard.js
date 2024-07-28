@@ -1,20 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // Dados estáticos para teste
     const dados_usuario = {
-        nome : "Ana Paula",
-        funcao : "Gerente"
+        nome: localStorage.getItem("user"),
+        funcao: localStorage.getItem("role")
     };
 
     const dados_venda_dia = {
-        totalVendas : '999',
-        produtosVendidos : '15',
-        produtosEmFalta : '5',
-        lucro : 'R$6.500,00'
+        totalVendas: '999',
+        produtosVendidos: '15',
+        produtosEmFalta: '5',
+        lucro: 'R$6.500,00'
     }
 
     atualizarDadosUsuario(dados_usuario);
-    
+
     updateDashboardMetrics(dados_venda_dia);
 });
 
@@ -27,7 +27,7 @@ function atualizarDadosUsuario(dados) {
     document.getElementById('funcao-funcionario').innerText = dados.funcao;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fetchDashboardData();
 });
 
@@ -77,7 +77,7 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-document.getElementById('infoSection').addEventListener('click', function() {
+document.getElementById('infoSection').addEventListener('click', function () {
     toggleLogout();
 });
 
@@ -158,7 +158,7 @@ const myHorizontalBarChart = new Chart(document.getElementById('grafico-produtos
         labels: ['Camiseta Lisa', 'Jaqueta Jeans', 'Calça Preta', 'Casaco Mooleton', 'Tênis', 'Bolsa Azul'],
         datasets: [{
             label: 'Popularidade',
-            data: [45, 29, 18, 4, 23,  43],
+            data: [45, 29, 18, 4, 23, 43],
             backgroundColor: [
                 'rgba(0, 123, 255, 0.2)',  // Azul claro
                 'rgba(255, 0, 85, 0.2)',   // Rosa

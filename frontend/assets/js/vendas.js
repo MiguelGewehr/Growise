@@ -77,12 +77,7 @@ function logout() {
 document.getElementById('infoSection').addEventListener('click', function() {
     toggleLogout();
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    //gera o card dos produtos
-    const apiUrl = /*'URL da API para buscar os produtos';*/
-
-    /**
+/**
      * Função para criar um card de produto
      * @param {Object} produto - dados do produto
      * @param {number} index - índice do produto
@@ -94,18 +89,18 @@ document.addEventListener("DOMContentLoaded", function() {
         card.innerHTML = `
             <div class="card">
                 <a data-bs-toggle="offcanvas" href="#offcanvas-produto-${index}" role="button" aria-controls="offcanvas-produto-${index}">
-                    <img src="${produto.imagem}" alt="${produto.nome}" class="card-img-top">
+                    <img src="assets/img/foto_produto.png" alt="${produto.nome}" class="card-img-top">
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">${produto.nome}</h5>
-                    <p class="card-text">R$${produto.preco_venda.toFixed(2)}</p>
+                    <p class="card-text">R$${produto.precoVenda.toFixed(2)}</p>
                     <p class="card-text">Quantidade em estoque: ${produto.quantidade}</p>
                 </div>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-produto-${index}" aria-labelledby="offcanvas-produto-${index}Label">
                     <div class="d-flex flex-column align-items-center dados_produtos">
                         <img class="img-fluid p-5" src="${produto.imagem}" alt="${produto.nome}">
                         <h5 class="text-center">${produto.nome}</h5>
-                        <p class="text-center preco">R$${produto.preco_venda.toFixed(2)}</p>
+                        <p class="text-center preco">R$${produto.precoVenda}</p>
                         <p class="text-center px-3">Descrição do produto: ${produto.descricao}</p>
                         <p class="text-center">Marca: ${produto.marca}</p>
                         <p class="text-center">Fornecedor: ${produto.fornecedor}</p>
@@ -129,22 +124,35 @@ document.addEventListener("DOMContentLoaded", function() {
         return card;
     }
 
-    /**
-     * Função para carregar produtos e preencher a página
-     */
-    function carregarProdutos() {
-        fetch(apiUrl)
+    async function carregarProdutos() {
+        const response = await fetch('http://localhost:8080/produto', {
+            method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            }
+
+        })
             .then(response => response.json())
             .then(data => {
-                const container = document.querySelector('.container-fluid .row');
-                container.innerHTML = ''; // Limpa os produtos existentes
-                data.forEach((produto) => {
-                    const card = criarCardProduto(produto);
+                var container = document.querySelector('.products.row');
+                data.forEach(produto => {
+                    const card = criarCardProduto(produto, produto.id);
                     container.appendChild(card);
                 });
             })
             .catch(error => console.error('Erro ao carregar produtos:', error));
     }
+
+document.addEventListener("DOMContentLoaded", function() {
+    //gera o card dos produtos
+   
+
+    
+
+    /**
+     * Função para carregar produtos e preencher a página
+     */
+    
     
     carregarProdutos();
 

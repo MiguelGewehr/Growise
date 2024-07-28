@@ -1,5 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const apiUrl = /*'URL da API para buscar os produtos';*/
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('nome-funcionario').innerText = localStorage.getItem("user");
+    document.getElementById('funcao-funcionario').innerText = "GERENTE";
+
+    const apiUrl = 'http://localhost:8080/produto';
 
     /**
      * Função para criar novo card de produto
@@ -11,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         card.className = 'col-3';
         card.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}"> //caso o produto tenha imagem enviada
+                <img src="assets/img/foto_produto.png" class="card-img-top" alt="${produto.nome}"> 
                 <div class="card-body">
                     <h5 class="card-title">${produto.nome}</h5>
-                    <p class="card-text">R$${produto.preco_venda},00</p>
+                    <p class="card-text">R$${produto.precoVenda},00</p>
                     <p class="card-text">Quantidade em estoque: ${produto.quantidade}</p>
                 </div>
             </div>
@@ -25,8 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     /**
      * Função para carregar produtos e preencher a página
      */
-    function carregarProdutos() {
-        fetch(apiUrl)
+    async function carregarProdutos() {
+        const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+            }
+
+        })
             .then(response => response.json())
             .then(data => {
                 const container = document.querySelector('.container.row');
@@ -64,6 +74,6 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-document.getElementById('infoSection').addEventListener('click', function() {
+document.getElementById('infoSection').addEventListener('click', function () {
     toggleLogout();
 });
