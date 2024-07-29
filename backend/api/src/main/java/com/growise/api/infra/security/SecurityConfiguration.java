@@ -33,10 +33,8 @@ public class SecurityConfiguration {
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowCredentials(true);
-                    // config.addAllowedOrigin("http://127.0.0.1:5500");
-                    config.addAllowedOrigin("http://127.0.0.1:5500/");
-                    config.addAllowedOrigin("http://127.0.0.1:5501/");
-                    config.addAllowedOrigin("*");
+                    config.addAllowedOrigin("http://127.0.0.1:5500");
+                    config.addAllowedOrigin("http://127.0.0.1:5501");
                     config.addAllowedHeader("*");
                     config.addAllowedMethod("*");
                     return config;
