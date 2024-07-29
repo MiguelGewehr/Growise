@@ -2,8 +2,9 @@
   <img title="logo" src="frontend/assets/img/logo-sm.png"/>
   <h1 align="center">GROWISE</h1>
 </div>
-O GROWISE foi desenvolvido para auxiliar na gestão de uma loja, oferecendo funcionalidades específicas para 2 tipos de usuários: gerente e vendedor.
-Este sistema foi projetado para ser intuitivo e de fácil utilização, garantindo que os usuários possam executar suas tarefas de maneira eficiente e sem complicações. Com estas funcionalidades, a loja pode alcançar uma gestão mais eficaz, aumentando a produtividade e melhorando a experiência tanto para os funcionários quanto para os clientes.
+O GROWISE foi desenvolvido para auxiliar na gestão de uma loja, projetado para ser intuitivo e de fácil utilização, garantindo que os usuários possam executar suas tarefas de maneira eficiente e sem complicações. 
+
+O sistema oferece funcionalidades específicas para 2 tipos de usuários (gerente e vendedor), para que, com elas, a loja alcançe uma gestão mais eficaz, aumentando a produtividade e melhorando a experiência tanto para os funcionários quanto para os clientes.
 
 ## Propósito do Sistema
 
