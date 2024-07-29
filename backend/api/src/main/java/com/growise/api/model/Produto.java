@@ -24,6 +24,16 @@ public class Produto implements Serializable{
     private Float precoCompra;
     private Float precoVenda;
     private String descricao;
+    public Produto(String nome, Integer quantidade, String marca, String fornecedor, Float precoCompra,
+        Float precoVenda, String descricao) {
+      this.nome = nome;
+      this.quantidade = quantidade;
+      this.marca = marca;
+      this.fornecedor = fornecedor;
+      this.precoCompra = precoCompra;
+      this.precoVenda = precoVenda;
+      this.descricao = descricao;
+    }
     public Produto() {
     }
     public Integer getId() {
