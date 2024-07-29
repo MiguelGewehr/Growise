@@ -44,11 +44,8 @@ function atualizarDadosUsuario(dados) {
     document.getElementById('funcao-funcionario').innerText = dados.funcao;
 }
 
-/**
- * Função para salvar o cadastro de um novo funcionário
- */
-document.getElementById('botaoCadastrar').addEventListener('click', async function (event) {
 
+async function novoFuncionario() {
     const nome = document.getElementById('nome').value;
     const cpf = document.getElementById('cpf').value;
     const email = document.getElementById('email').value;
@@ -57,6 +54,7 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
 
     const funcao = document.getElementById('funcao').value;
     var role;
+
     if (funcao == 1) {
         role = "ADMIN"
 
@@ -71,8 +69,21 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
         password: senha,
         role: role
     };
+    return data;
+}
+/**
+ * Função para salvar o cadastro de um novo funcionário
+ */
+const form = document.getElementById('cadastroForm');
+
+form.addEventListener('submit', async function (event) {
+
+    event.preventDefault();
+
+    const data = await novoFuncionario();
 
     try {
+        
         const response = await fetch('http://localhost:8080/auth/register', {
             method: 'POST',
             headers: {
@@ -85,16 +96,17 @@ document.getElementById('botaoCadastrar').addEventListener('click', async functi
         });
 
         if (response.ok) {
-            const result = await response.json();
+            
             alert('Cadastro realizado com sucesso!');
-            //console.log(result);
+            window.location.reload();
+
         } else {
             alert('Erro ao cadastrar!');
-            //console.error('Erro:', response.statusText);
+            console.log('Erro response:' + response.statusText);
         }
     } catch (error) {
         alert('Erro ao cadastrar!');
-        //console.error('Erro:', error);
+        console.log('Erro fetch:' + error);
     }
 
 });
