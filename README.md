@@ -19,27 +19,24 @@ A integração faz com que as informações das vendas sejam salvas automaticame
 
 ## Instalação
 
-```sh
-sudo apt install nodejs
-sudo apt install npm
-npm init -y
-npm install jest jest-environment-jsdom --save-dev
-npm install --save-dev jest jest-fetch-mock
-npm install --save-dev jsdoc
-npm install whatwg-fetch --save-dev
-```
 
 ## Configuração para Desenvolvimento
 
 ### Rodar testes
+
 ```sh
+make install
 npm test
 ```
 
 ### Documentação JavaScript com JSDoc
+
 ```sh
+npm i -D jsdoc
 npm run doc
 ```
+
+Após rodar esses comandos acesse a documentação do JavaScript presente no diretório na pasta frontend/assets/docs
 
 ## Licença
 
