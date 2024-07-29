@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "aplicação do frontend",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "doc": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
