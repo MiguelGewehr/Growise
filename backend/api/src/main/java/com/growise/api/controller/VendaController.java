@@ -19,6 +19,10 @@ import com.growise.api.model.Venda;
 import com.growise.api.model.DTO.VendaDTO;
 import com.growise.api.service.VendaService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/venda")
 public class VendaController {
@@ -26,28 +30,31 @@ public class VendaController {
     @Autowired
     private VendaService vendaService;
 
+    @Operation(description = "Retorna uma lista com todas as vendas regsitradas.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
+            @ApiResponse(responseCode = "403", description = "Usuário autenticado e sem permissão para essa requisição")
+
+    })
     @GetMapping
     public List<Venda> findAllVenda() {
         return vendaService.findAllVenda();
 
     }
 
+    @Operation(description = "Retorna uma lista com todos os registros de produtos")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Registro de venda criado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Não foi possível processar o cadastro devido a um erro na requisição recebida"),
+            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
+            @ApiResponse(responseCode = "403", description = "Usuário autenticado e sem permissão para essa requisição")
+
+    })
     @PostMapping
     public ResponseEntity<Venda> saveVenda(@RequestBody VendaDTO vendaDTO) {
         Venda newVenda = vendaService.saveVenda(vendaDTO);
         return new ResponseEntity<>(newVenda, HttpStatus.CREATED);
     }
 
-   /*  @PutMapping
-    public Venda updateVenda(@RequestBody Venda Venda) {
-
-        
-        return VendaService.updateVenda(Venda);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteVenda(@PathVariable("id") Integer id) {
-        VendaService.deleteVenda(id);
-    }
-*/
 }

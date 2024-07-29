@@ -45,16 +45,7 @@ public class VendaService {
         }
         return saved;
     }
-
-    /*
-     * public Venda updateVenda(Venda venda){
-     * 
-     * }
-     * 
-     * public void deleteVenda(Integer id){
-     * 
-     * }
-     */
+    
     public Venda getVendaById(Integer id) {
         return vendaRepository.getReferenceById(id);
     }

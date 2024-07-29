@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                     // config.addAllowedOrigin("http://127.0.0.1:5500");
                     config.addAllowedOrigin("http://127.0.0.1:5500/");
                     config.addAllowedOrigin("http://127.0.0.1:5501/");
+                    config.addAllowedOrigin("*");
                     config.addAllowedHeader("*");
                     config.addAllowedMethod("*");
                     return config;
@@ -45,7 +46,17 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/tower").hasRole("ADMIN")
+                        .requestMatchers(
+                                "/v2/api-docs",
+                                "/v3/api-docs/**", // Caso você esteja usando OpenAPI 3
+                                "/swagger-resources/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/webjars/**",
+                                "/swagger-ui/index.html")
+                        .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
+
                         .anyRequest().authenticated()
 
                 )

@@ -20,6 +20,9 @@ import com.growise.api.model.user.RegisterDTO;
 import com.growise.api.model.user.User;
 import com.growise.api.repository.UserRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 
 import org.springframework.security.core.AuthenticationException;
@@ -38,6 +41,12 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @Operation(description = "Recebe os dados de login e senha para a autenticacão do usuário; Retorna um token JWT, o nome do usuário e seu grupo de permissões.")
+    @ApiResponses(value ={
+        @ApiResponse(responseCode = "200",description = "Usuário encontrado"),
+        @ApiResponse(responseCode = "401",description = "Usuário não encontrado ou credenciais inválidas")
+        
+    })
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data) {
         try {
@@ -46,7 +55,7 @@ public class AuthenticationController {
             var token = tokenService.generateToken((User) auth.getPrincipal());
             var role = ((User) auth.getPrincipal()).getRole();
             var name = ((User) auth.getPrincipal()).getName();
-            System.out.println("***role + nome:   " + role + " " + name);
+            // System.out.println("***role + nome: " + role + " " + name);
 
             // Se chegou aqui, a autenticaç var role = auth.getDetails();ão foi bem-sucedida
             // Adicione lógica adicional conforme necessário
@@ -61,6 +70,12 @@ public class AuthenticationController {
         }
     }
 
+    @Operation(description = "Recebe os dados para cadastrar um novo usuário.")
+    @ApiResponses(value ={
+        @ApiResponse(responseCode = "200", description = "Usuário cadastrado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "Não foi possível processar o cadastro devido a um erro na requisição recebida")
+
+    })
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid RegisterDTO data) {
         if (this.userRepository.findByEmail(data.email()) != null)
