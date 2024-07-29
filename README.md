@@ -2,22 +2,33 @@
   <img title="logo" src="frontend/assets/img/logo-sm.png"/>
   <h1 align="center">GROWISE</h1>
 </div>
+O GROWISE foi desenvolvido para auxiliar na gestão de uma loja, oferecendo funcionalidades específicas para 2 tipos de usuários: gerente e vendedor.
+Este sistema foi projetado para ser intuitivo e de fácil utilização, garantindo que os usuários possam executar suas tarefas de maneira eficiente e sem complicações. Com estas funcionalidades, a loja pode alcançar uma gestão mais eficaz, aumentando a produtividade e melhorando a experiência tanto para os funcionários quanto para os clientes.
 
-O Growise é uma aplicação web projetada para atender às necessidades de gestão de lojas. 
+## Propósito do Sistema
 
-Seu propósito principal é fornecer uma plataforma para o cadastro de produtos, gerenciamento de vendas e controle de dados essenciais das lojas, como receita, lucro e estoque. 
+O propósito principal deste sistema é otimizar e simplificar as operações diárias da loja, proporcionando um ambiente organizado e eficiente para a gestão de produtos, vendas e funcionários. As principais funcionalidades incluem:
 
-O sistema visa centralizar informações e facilitar o controle de vendas, permitindo acesso rápido a dados relevantes para uma gestão eficaz.
+1. **Gestão de Vendas:**
+   - **Usuário: Vendedor**
+   - **Descrição:** Os vendedores podem acessar a página de vendas, onde podem selecionar produtos e quantidades para processar pedidos de clientes de maneira rápida e eficiente.
+      ![608ec175-8a37-4a0f-ade2-7640faa94aad](https://github.com/user-attachments/assets/da02d8f0-fd71-4927-941a-e05161531354)
 
-## Exemplo de uso
+2. **Cadastro de Produtos:**
+   - **Usuário: Gerente**
+   - **Descrição:** O gerente tem acesso à página de cadastro de produtos, permitindo a adição de novos produtos que serão disponibilizados para venda. Esta funcionalidade garante que o inventário esteja sempre atualizado.
 
-O sistema permite que qualquer tipo de loja cadastre seus produtos e funcionários, para que possam ser feitas as vendas.
-![608ec175-8a37-4a0f-ade2-7640faa94aad](https://github.com/user-attachments/assets/da02d8f0-fd71-4927-941a-e05161531354)
+3. **Cadastro de Funcionários:**
+   - **Usuário: Gerente**
+   - **Descrição:** O gerente pode cadastrar novos funcionários, atribuindo-lhes as funções necessárias para o bom funcionamento da loja. Esta funcionalidade facilita a gestão e a organização da equipe.
 
-A integração faz com que as informações das vendas sejam salvas automaticamente, possibilitando que o gerente tenha acesso à diferentes métricas da loja.
-![a81e7c29-a067-4fbc-9bc7-a57d71935eb1](https://github.com/user-attachments/assets/cbce0436-4d09-49b4-87b5-dd29c3843fa5)
+4. **Dashboard de Métricas:**
+   - **Usuário: Gerente**
+   - **Descrição:** A página de dashboard fornece ao gerente uma visão abrangente das métricas da loja, como lucro mensal, quantidade de produtos vendidos, e os dias da semana com mais vendas. Esta funcionalidade é essencial para a tomada de decisões estratégicas, baseadas em dados reais e atualizados.
+     ![a81e7c29-a067-4fbc-9bc7-a57d71935eb1](https://github.com/user-attachments/assets/cbce0436-4d09-49b4-87b5-dd29c3843fa5)
 
 ## Instalação
+
 
 
 ## Configuração para Desenvolvimento
