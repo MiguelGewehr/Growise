@@ -43,11 +43,10 @@ npm test
 npm i -D jsdoc
 npm run doc
 ```
+Após rodar esses comandos acesse a documentação do JavaScript presente no diretório na pasta frontend/assets/docs
 
 ### Documentacao da API com Swagger: 
 acessar enquanto a API estiver rodando: http://localhost:8080/swagger-ui
-
-Após rodar esses comandos acesse a documentação do JavaScript presente no diretório na pasta frontend/assets/docs
 
 ## Licença
 
