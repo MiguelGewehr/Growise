@@ -28,10 +28,6 @@ O propósito principal deste sistema é otimizar e simplificar as operações di
    - **Descrição:** A página de dashboard fornece ao gerente uma visão abrangente das métricas da loja, como lucro mensal, quantidade de produtos vendidos, e os dias da semana com mais vendas. Esta funcionalidade é essencial para a tomada de decisões estratégicas, baseadas em dados reais e atualizados.
      ![a81e7c29-a067-4fbc-9bc7-a57d71935eb1](https://github.com/user-attachments/assets/cbce0436-4d09-49b4-87b5-dd29c3843fa5)
 
-## Instalação
-
-
-
 ## Configuração para Desenvolvimento
 
 ### Rodar testes
@@ -47,6 +43,9 @@ npm test
 npm i -D jsdoc
 npm run doc
 ```
+
+### Documentacao da API com Swagger: 
+acessar enquanto a API estiver rodando: http://localhost:8080/swagger-ui
 
 Após rodar esses comandos acesse a documentação do JavaScript presente no diretório na pasta frontend/assets/docs
 
