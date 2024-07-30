@@ -56,7 +56,5 @@ public class Venda implements Serializable {
         this.ordens = ordens;
     }
 
-    //adicionar List de order
-
 
 }
