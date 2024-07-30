@@ -1,38 +1,26 @@
-class Venda{
-    
-    vendas = [];
+import Produto from './Produto.js';
+import Venda from './Venda.js';
 
-    constructor(data, ordens, valorTotal) {
-        this.data = data;
-        this.ordens = ordens;
-        this.valorTotal = valorTotal;
+class dadosVendasDia{
+    constructor(vendas, produtos){
+        this.totalVendas = vendas.length;
+        this.produtosVendidos = vendas.ordens.length;
+        this.lucro = calculaLucro(vendas.ordens, produtos);
     }
+    
+    calculaLucro(ordens, produtos) {
+        let lucro = 0;
 
-    static async carregarVendas() {
-        try {
-            const response = await fetch('http://localhost:8080/venda', {
-                method: "GET",
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-                }
-            });
-            const data = await response.json();
-            Venda.vendas = data.map(venda => new Venda(
-                venda.data,
-                venda.ordens,
-                venda.valorTotal,
-            ));
-        } catch (error) {
-            console.error('Erro ao carregar Vendas:', error);
+        for (let ordem of ordens) {
+            let produto = produtos[ordem.id];
+            lucro += (produto.precoVenda - produto.precoCompra) * ordem.quantidade;
         }
+
+        return lucro;
     }
 }
 
-// Carregar os produtos do banco de dados ao inicializar o programa
-(async () => {
-    await Venda.carregarVenda();
-    console.log('Vendas carregados:', Produto.produtos);
-})();
+const dadosVendas = new DadosVendasDia(Venda.vendas, Produto.produtos);
 
 document.addEventListener('DOMContentLoaded', function () {
 

@@ -46,3 +46,5 @@ class Produto{
     await Produto.carregarProdutos();
     console.log('Produtos carregados:', Produto.produtos);
 })();
+
+export default Produto;
