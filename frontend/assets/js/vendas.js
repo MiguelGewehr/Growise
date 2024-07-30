@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let produtos = [];
         const pedidoLateral = document.getElementById('abaPedidoLateral');
         const produtosElementos = pedidoLateral.querySelectorAll('.produto-item');
-        const valorTotalPedido = 0;
+        var valorTotalPedido = 0;
 
         produtosElementos.forEach(function (produtoElemento) {
             const nomeProduto = produtoElemento.querySelector('.nome-produto').innerText;
@@ -210,17 +210,19 @@ document.addEventListener("DOMContentLoaded", function() {
             valorTotalPedido += valorTotalProduto;
 
             produtos.push({
-                nome: nomeProduto,
+                id: nomeProduto,
                 quantidade: quantidadeProduto,
-                valorTotalProduto: valorTotalProduto
+                valorTotal: valorTotalProduto
             });
         });
 
         const pedido = {
-            //numeroPedido: /*o numero do pedido não deveria vir do backend?*/,
-            produtos: produtos,
-            valorTotalPedido: valorTotalPedido
+            data: getDataAtual(), 
+            ordens: produtos,
+            valorTotal: valorTotalPedido
         };
+
+        console.log(JSON.stringify(pedido));
 
         // Envie os dados ao backend
         fetch('URL_DO_SEU_BACKEND', {
