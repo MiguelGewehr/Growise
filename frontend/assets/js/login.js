@@ -8,10 +8,16 @@ if (botao) {
         const login = document.getElementById('email').value;
         const password = document.getElementById('senha').value;
 
+        console.log('=== DEBUG FRONTEND ===');
+        console.log('Email digitado:', login);
+        console.log('Senha digitada:', password);
+
         const data = {
             email: login,
             password: password
         };
+
+        console.log('Dados que serão enviados:', data);
 
         try {
             let response = await fetch('http://localhost:8080/auth/login', {
@@ -23,13 +29,15 @@ if (botao) {
                 body: JSON.stringify(data)
             })
 
+            console.log('Status da resposta:', response.status);
+            console.log('Headers da resposta:', response.headers);
+
             if (response.ok) {
                 const data = await response.json();
-                console.log(response); // true
+                console.log('Resposta completa:', data);
                 const token = data.token;
                 const name = data.nome;
                 const role = data.role;
-
 
                 acessToken = 'Bearer ' + token;
                 localStorage.setItem('accessToken', token);
@@ -43,11 +51,20 @@ if (botao) {
                     window.location.href = 'vendas.html';
                 } else if (data.role === 'ADMIN') {
                     localStorage.setItem('role', "Gerente");
-
                     window.location.href = 'dashboard.html';
                 }
             } else {
-                console.log('Erro:', response.statusText);
+                console.log('Erro HTTP:', response.status);
+                console.log('Status Text:', response.statusText);
+                
+                // Tentar ler a resposta de erro
+                try {
+                    const errorData = await response.text();
+                    console.log('Corpo da resposta de erro:', errorData);
+                } catch (e) {
+                    console.log('Não foi possível ler o corpo da resposta de erro');
+                }
+                
                 alert('Usuário ou senha inválidos.');
             }
         }

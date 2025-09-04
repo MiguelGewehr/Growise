@@ -8,6 +8,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -85,5 +87,38 @@ public class AuthenticationController {
         this.userRepository.save(newUser);
         return ResponseEntity.ok().build();
 
+    }
+    
+    @GetMapping("/generate-hash/{password}")
+    public ResponseEntity<String> generateHash(@PathVariable String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hash = encoder.encode(password);
+        
+        return ResponseEntity.ok(
+            "Senha: '" + password + "'\n" +
+            "Hash gerado: " + hash + "\n\n" +
+            "SQL para atualizar:\n" +
+            "UPDATE tb_user SET password = '" + hash + "' WHERE email = 'admin@growise.com';\n\n" +
+            "Copie e execute o SQL acima no seu banco de dados."
+        );
+    }
+
+    @GetMapping("/test-password/{password}")  
+    public ResponseEntity<String> testPassword(@PathVariable String password) {
+        try {
+            // Hash atual no banco
+            String hashedPasswordFromDB = "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.";
+            
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            boolean matches = encoder.matches(password, hashedPasswordFromDB);
+            
+            return ResponseEntity.ok(
+                "Senha testada: '" + password + "'\n" +
+                "Hash no banco: " + hashedPasswordFromDB + "\n" +
+                "Resultado: " + (matches ? "SENHA CORRETA ✅" : "SENHA INCORRETA ❌")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.ok("Erro: " + e.getMessage());
+        }
     }
 }

@@ -2,7 +2,7 @@ package com.growise.api.model.user;
 
 public enum UserRole{
 
-    ADMIN("adimin"),
+    ADMIN("admin"),
     USER("user");
 
     private String role;
